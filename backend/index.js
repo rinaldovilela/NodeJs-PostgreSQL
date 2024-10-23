@@ -27,3 +27,14 @@ app.get("/tutores", async (req, res) => {
         res.status(500).send("Erro ao consultar tutores");
     }
 });
+
+app.get("/pets" , async (req, res) => {
+    console.log("Consultando a tabela pets ...")
+    const result = await pool.query("SELECT * FROM Animais")
+    res.json(result.rows);
+})
+
+app.get("/tratamentos" , async (req, res) => {
+    const result = await pool.query("SELECT * FROM Tratamentos")
+    res.json(result.rows)
+})
